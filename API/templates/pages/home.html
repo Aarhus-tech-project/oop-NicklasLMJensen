@@ -7,12 +7,14 @@
 {% block content %}
   <body class="home_body">
     
-    <form>
+    <form action="/books" method="post" class="bookForm">
         <label class="Bname" for="Bname">Book Name:</label>
         <input class="BnameInput" type="text" id="Bname" name="Bname">
-        <label class="Bcover" for="Bcover">Book Cover:</label>
-        <input class="BcoverInput" type="file" id="Bcover" name="Bcover">
+        <label class ="Aname" for="Aname">Author Name:</label>
+        <input class="AnameInput" type="text" id="Aname" name="Aname">
+        <input class="Rating" type="number" id="Rating" name="Rating" min="1" max="5" placeholder="Rating (1-5)">
+        <input class="submitButton" type="submit" value="Add Book">
     </form>
 
   </body>
-{% endblock content %}
+{% endblock content %} 
