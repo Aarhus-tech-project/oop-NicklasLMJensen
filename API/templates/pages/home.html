@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}{% endblock title %}</h2>
+{% endblock header %}
+
+{% block content %}
+  <body class="home_body">
+    
+    <form>
+        <label class="Bname" for="Bname">Book Name:</label>
+        <input class="BnameInput" type="text" id="Bname" name="Bname">
+        <label class="Bcover" for="Bcover">Book Cover:</label>
+        <input class="BcoverInput" type="file" id="Bcover" name="Bcover">
+    </form>
+
+  </body>
+{% endblock content %}
