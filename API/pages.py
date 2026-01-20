@@ -49,3 +49,11 @@ def remove_book(id):
     if success:
         return {"message": "Book deleted successfully"}, 200
     return {"message": "Book not found"}, 404
+
+
+
+@bp.route("/list")
+def list_books():
+    my_library = Library(db.session)
+    all_books = my_library.get_all()
+    return render_template("pages/List.html", books=all_books)
