@@ -2,19 +2,34 @@
 
 {% block header %}
   <h2>{% block title %}{% endblock title %}</h2>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 {% endblock header %}
 
 {% block content %}
-  <body class="home_body">
-    
-    <form action="/books" method="post" class="bookForm">
-        <label class="Bname" for="Bname">Book Name:</label>
-        <input class="BnameInput" type="text" id="Bname" name="Bname">
-        <label class ="Aname" for="Aname">Author Name:</label>
-        <input class="AnameInput" type="text" id="Aname" name="Aname">
-        <input class="Rating" type="number" id="Rating" name="Rating" min="1" max="5" placeholder="Rating (1-5)">
-        <input class="submitButton" type="submit" value="Add Book">
-    </form>
+  <body class="list_body">
+
+    <div class="container">
+      <h1>Add your books!</h1>
+      <form action="/books" method="post" class="bookForm">
+        <div class="input-wrapper">
+          <input type="text" id="Bname" name="Bname" placeholder="Book Name">
+          <label for="Bname">Book Name</label>
+        </div>
+
+      <div class="input-wrapper">
+        <input type="text" id="Aname" name="Aname" placeholder="Author Name">
+        <label for="Aname">Author Name</label>
+      </div>
+
+      <div class="input-wrapper">
+        <input type="number" id="Rating" name="Rating" min="1" max="5" placeholder="Rating (1-5)">
+        <label for="Rating">Rating</label>
+      </div>
+      <input class="submitButton" type="submit" value="Add Book">
+      </form>
+    </div>
+
 
   </body>
+  
 {% endblock content %} 
