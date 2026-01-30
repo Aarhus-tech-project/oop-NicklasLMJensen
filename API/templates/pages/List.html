@@ -3,19 +3,23 @@
 {% block header %}
 <h2>{% block title %}{% endblock title %}</h2>
 <link rel="stylesheet" href="{{ url_for('static', filename='List.css') }}">
+<script src="{{ url_for('static', filename='list.js') }}" type="module"></script>
 {% endblock header %}
 
 
 {% block content %}
 
-<body class="list_body">
+<main class="book-list">
     <h3>Book List</h3>
     <table class="bookTable">
         <thead>
             <tr>
                 <th>Book Name</th>
                 <th>Author Name</th>
+                <th>Chapter Count</th>
+                <th>Finished</th>
                 <th>Rating</th>
+                <th>Remove book</th>
             </tr>
         </thead>
         <tbody>
@@ -23,10 +27,22 @@
             <tr>
                 <td>{{ book.title }}</td>
                 <td>{{ book.author }}</td>
+                <td class="editable"
+                    contenteditable="true"
+                    data-id="{{book.id}}"
+                    data-field="chapter"
+                    >{{ book.chapter }}</td>
+                <td>{% if book.finished %}Yes{% else %}No{% endif %}</td>
                 <td>{{ book.rating }}</td>
+                <td>
+                    <button class="delete-btn" data-id="{{ book.id }}">
+                        X
+                    </button>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</main>
 
 {% endblock content %} 

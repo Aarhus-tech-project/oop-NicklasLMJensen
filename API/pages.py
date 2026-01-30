@@ -27,7 +27,9 @@ def add_book():
     book = Book(
         title=data.get('Bname'),
         author=data.get('Aname'),
-        rating=data.get('Rating')
+        chapter=data.get('chapter'),
+        rating=data.get('Rating'),
+        finished=1 if data.get('finished') else 0
     )
     my_library.add_book(book)
     from flask import redirect, url_for
@@ -50,7 +52,16 @@ def remove_book(id):
         return {"message": "Book deleted successfully"}, 200
     return {"message": "Book not found"}, 404
 
+@bp.route("/books/<int:id>", methods=["PATCH"])
+def update_book(id):
+    data = request.get_json(silent=True)
+    my_library = Library(db.session)
 
+    success = my_library.update_book(id, data)
+
+    if success:
+        return {"message": "Book updated successfully"}, 200
+    return {"message": "Book not found"}, 404
 
 @bp.route("/list")
 def list_books():

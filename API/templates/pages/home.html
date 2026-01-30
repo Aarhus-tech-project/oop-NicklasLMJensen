@@ -5,31 +5,42 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 {% endblock header %}
 
-{% block content %}
-  <body class="list_body">
 
-    <div class="container">
-      <h1>Add your books!</h1>
-      <form action="/books" method="post" class="bookForm">
+{% block content %}
+
+
+  <main class="home-centered-content">
+      <div class="container">
+        <h1>Add your books!</h1>
+        <form action="/books" method="post" class="bookForm">
+          <div class="input-wrapper">
+            <input class="form-input" type="text" id="Bname" name="Bname" placeholder="Book Name" required>
+            <label class="form-label" for="Bname">Book Name</label>
+          </div>
+
         <div class="input-wrapper">
-          <input type="text" id="Bname" name="Bname" placeholder="Book Name">
-          <label for="Bname">Book Name</label>
+          <input class="form-input" type="text" id="Aname" name="Aname" placeholder="Author Name" required>
+          <label class="form-label" for="Aname">Author Name</label>
         </div>
 
-      <div class="input-wrapper">
-        <input type="text" id="Aname" name="Aname" placeholder="Author Name">
-        <label for="Aname">Author Name</label>
+        <div class="input-wrapper md:span-2">
+          <input class="form-input" type="number" id="chapter" name="chapter" min="0" max="9999" placeholder="Chapter Count">
+          <label class="form-label" for="chapter">Chapter Count</label>
+        </div>
+
+        <div class="input-wrapper md:span-2">
+          <input class="form-input" type="number" id="Rating" name="Rating" min="0" max="5" placeholder="Rating (1-5)">
+          <label class="form-label" for="Rating">Rating</label>
+        </div>
+
+        <div class="input-wrapper">
+          <input class="form-input" type="checkbox" id="finished" name="finished">
+          <label class="form-label" for="finished">Finished</label>
+        </div>
+        
+        <input class="submitButton md:span-2" type="submit" value="Add Book">
+        </form>
       </div>
-
-      <div class="input-wrapper">
-        <input type="number" id="Rating" name="Rating" min="1" max="5" placeholder="Rating (1-5)">
-        <label for="Rating">Rating</label>
-      </div>
-      <input class="submitButton" type="submit" value="Add Book">
-      </form>
-    </div>
-
-
-  </body>
+  </main>
   
 {% endblock content %} 
